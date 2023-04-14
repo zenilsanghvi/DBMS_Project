@@ -125,6 +125,19 @@ app.post("/price_filter_table",function(req,res){
 });
 
 
+app.get("/product_stock",function(req,res){
+  res.render("product_stock");
+})
+
+app.post("/product_stock",function(req,res){
+  let sql="select product_stock(?)";
+  con.query(sql,req.body.pname,function(err,result){
+    if (err) throw err;
+    res.send(result);
+    // console.r(result);
+  })
+})
+
 const port = 3000; // Port we will listen on
 
 // Function to listen on the port
