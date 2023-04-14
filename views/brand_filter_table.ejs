@@ -20,9 +20,11 @@
         <th>Product</th>
         <th>Items in stock</th>
       </tr>
-      <% table.forEach(function(item,index){%>
+      <% table.forEach(function(item){%>
       <tr>
-        <td><%=console.log(item.c_sname)%></td>
+        <td><%=item.s_name%></td>
+        <td><%=item.p_name%></td>
+        <td><%=item.p_qty%></td>
       </tr>
       <%})%>
     </table>

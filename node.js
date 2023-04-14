@@ -45,11 +45,11 @@ app.post("/add_cartitem", function (req, res) {
     function (err, result) {
       if(err) throw err;
     }
-  );
+    );
   sql="select * from cart_item";
   con.query(sql,(err,result)=>{
     if (err) res.send(err);
-      // console.log(result);
+    console.log(result);
       res.render("cart",{table:result});
   })
 });
@@ -59,11 +59,11 @@ app.get("/brandfilter", function (req, res) {
 });
 
 app.post("/brandfiltertable", function (req, res) {
-  let sql = "call brand_filter(?)";
-  con.query(sql, req.body.BrandName, function (err, result) {
+  let sql = `select s_name,p_name,p_qty from seller,product where "${req.body.BrandName}"=s_name and s_id=p_seller_id`;
+  con.query(sql, function (err, result) {
     if (err) res.send(err);
-    // console.log(result[0][0]);
-    res.render("brand_filter_table", { table: result });
+    // console.log(result);
+    res.render("brand_filter_table",{table:result});
   });
 
   // sql="select * from cart_item";
