@@ -49,7 +49,7 @@ app.post("/add_cartitem", function (req, res) {
   sql="select * from cart_item";
   con.query(sql,(err,result)=>{
     if (err) res.send(err);
-      console.log(result);
+      // console.log(result);
       res.render("cart",{table:result});
   })
 });

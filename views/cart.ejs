@@ -20,13 +20,13 @@
         <th>ProductID</th>
         <th>Quantity</th>
       </tr> 
-      <% for(var i=0;i<table.length-1;i++){%>
-      <tr>
-        <td><%=table[i][0].ci_cart_id%></td>
-        <td><%=table[i][0].ci_product_id%></td>
-        <td><%=table[i][0].ci_qty%></td>
-      </tr>
-      <%}%>
+      <% table.forEach(function(item){ %>
+        <tr>
+          <td><%= item.ci_product_id %></td>
+          <td><%= item.ci_qty %></td>
+          <td><%= item.ci_cart_id %></td>
+        </tr>
+      <% }) %>
     </table>
   </body>
 </html>
