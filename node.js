@@ -54,16 +54,6 @@ app.post("/add_cartitem", function (req, res) {
   })
 });
 
-
-// app.post('/submit', (req, res) => {
-//   // nsert Login Code Here
-//   let username = req.body.username;
-//   let password = req.body.password;
-//   console.log(req.body);
-//   console.log(password);
-//   res.json(`Username: ${username} Password: ${password}`);
-// });
-
 app.get("/brandfilter", function (req, res) {
   res.render("brand_filter");
 });
@@ -72,8 +62,16 @@ app.post("/brandfiltertable", function (req, res) {
   let sql = "call brand_filter(?)";
   con.query(sql, req.body.BrandName, function (err, result) {
     if (err) res.send(err);
+    // console.log(result[0][0]);
     res.render("brand_filter_table", { table: result });
   });
+
+  // sql="select * from cart_item";
+  // con.query(sql,(err,result)=>{
+  //   if (err) res.send(err);
+  //     // console.log(result);
+  //     res.render("cart",{table:result});
+  // })  
 });
 
 const port = 3000; // Port we will listen on
