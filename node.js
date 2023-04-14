@@ -111,6 +111,20 @@ app.post("/chng_qty",function(req,res){
 }); 
 
 
+app.get("/price_filter",function(req,res){
+  res.render("price_filter");
+});
+
+app.post("/price_filter_table",function(req,res){
+  let sql = `select p_name,p_desc,p_price from product where ${req.body.lp}<=p_price and p_price<=${req.body.hp}`;
+  con.query(sql, function (err, result) {
+    if (err) res.send(err);
+    // console.log(result);
+    res.render("price_filter_table",{table:result});
+  })
+});
+
+
 const port = 3000; // Port we will listen on
 
 // Function to listen on the port
