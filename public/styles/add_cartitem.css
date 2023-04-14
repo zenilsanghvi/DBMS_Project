@@ -1,0 +1,52 @@
+form {
+margin-top: 15%;
+display: inline-block;
+margin-left: 35%;
+margin-right: 35%;
+text-align: left;
+color: #D4AFB9;
+display: flex;
+flex-direction: column;
+align-items: center;
+border: 3px solid #793b3b;
+background-color: gray;
+border-radius: 10px;
+padding: 20px;
+opacity: 0.90;
+}
+div.form{
+display: block;
+text-align: center;
+
+}
+body {
+height: 100%;
+background-repeat: no-repeat;
+background-size: cover;
+text-align: center;
+background-image: url("../images/pexels-morten-h-hansen-16122930.jpg");
+}
+span {
+margin-top: 20px;
+font-weight: bold;
+}
+
+input[type="text"] {
+padding: 10px;
+margin-bottom: 20px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+button[type="submit"] {
+background-color: #4CAF50;
+color: white;
+padding: 12px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+button[type="submit"]:hover {
+background-color: #403857;
+}

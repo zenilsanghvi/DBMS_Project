@@ -1,0 +1,64 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-image: url(/public/images/img.jpg);
+	background-size: cover;
+}
+
+footer{
+	text-align: center;
+	color: #403857;
+}
+
+header {
+	text-align: center;
+	background-color: #D4AFB9;
+	color: #fff;
+	padding: 20px;
+}
+
+main {
+	/* text-align: center; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+form {
+	background-color: #403857;
+	border-radius: 20px;
+	padding: 50px;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+	/* color: ; */
+	display: block;
+	margin-bottom: 20px;
+	padding: 10px;
+	width: 100%;
+	border-radius: 5px;
+	border: none;
+}
+
+input[type="submit"] {
+	background-color: #D4AFB9;
+	color: #fff;
+	cursor: pointer;
+}
+
+img {
+	max-width: 50%;
+	height: auto;
+	margin-left: 50px;
+	border-radius: 10px;
+}
+/* body{
+	background-image: url("images/img.jpg");
+} */
