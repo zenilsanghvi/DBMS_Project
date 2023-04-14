@@ -138,6 +138,20 @@ app.post("/product_stock",function(req,res){
   })
 })
 
+
+app.get("/total_cost",function(req,res){
+  res.render("total_cost");
+})
+
+app.post("/total_cost",function(req,res){
+  let sql="select total_cost(?)";
+  con.query(sql,req.body.cid,function(err,result){
+    if (err) throw err;
+    res.send(result);
+  })
+})
+
+
 const port = 3000; // Port we will listen on
 
 // Function to listen on the port
