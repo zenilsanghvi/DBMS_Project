@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/userstable.css" />
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Cancel ID</th>
+        <th>Order ID</th>
+        <th>Refund Amount</th>
+      </tr>
+      <% table.forEach(function(user){%>
+      <tr>
+        <td><%=user.cl_id%></td>
+        <td><%=user.cl_order_id%></td>
+        <td><%=user.cl_refund%></td>
+      </tr>
+      <%})%>
+    </table>
+  </body>
+</html>

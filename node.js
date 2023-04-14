@@ -39,13 +39,9 @@ app.get("/add_cartitem", function (req, res) {
 
 app.post("/add_cartitem", function (req, res) {
   let sql = "call add_cartitem(?,?,?)";
-  con.query(
-    sql,
-    [req.body.UserID, req.body.ProductID, req.body.Quantity],
+  con.query(sql,[req.body.UserID, req.body.ProductID, req.body.Quantity],
     function (err, result) {
-      if(err) throw err;
-    }
-    );
+      if(err) throw err;});
   sql="select * from cart_item";
   con.query(sql,(err,result)=>{
     if (err) res.send(err);
@@ -73,6 +69,29 @@ app.post("/brandfiltertable", function (req, res) {
   //     res.render("cart",{table:result});
   // })  
 });
+
+
+app.get("/cancel",function(req,res){
+  res.render("cancel");
+});
+
+app.post("/cancel_table",function(req,res){
+  let sql="call cancel(?)";
+  con.query(sql,req.body.oid,function(err,result){
+    if (err) throw err;
+    con.query("select * from cancel where cl_order_id=?",(int)(req.body.oid),function(err,result){
+      if (err) throw err;
+      // res.render("cancel_table",{table:result});
+    });
+    sql="select * from cancel";
+    con.query(sql,(err,result)=>{
+    if (err) res.send(err);
+    // console.log(result);
+      res.render("cancel_table",{table:result});
+  })
+  });
+});
+
 
 const port = 3000; // Port we will listen on
 
