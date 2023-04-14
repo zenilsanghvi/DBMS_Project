@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/userstable.css" />
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Product ID</th>
+        <th>Quantity</th>
+      </tr>
+      <% table.forEach(function(user){%>
+      <tr>
+        <td><%=user.ci_product_id%></td>
+        <td><%=user.ci_qty%></td>
+      </tr>
+      <%})%>
+    </table>
+  </body>
+</html>

@@ -86,11 +86,29 @@ app.post("/cancel_table",function(req,res){
     sql="select * from cancel";
     con.query(sql,(err,result)=>{
     if (err) res.send(err);
-    // console.log(result);
-      res.render("cancel_table",{table:result});
+    console.log(result);
+      // res.render("cancel_table",{table:result});
   })
   });
 });
+
+
+app.get("/chng_qty",function(req,res){
+  res.render("chng_qty");
+});
+
+app.post("/chng_qty",function(req,res){
+  let sql="call chng_qty(?,?,?)";
+  con.query(sql,[req.body.uid,req.body.pid,req.body.rqty],function(err,result){
+    if(err) throw (err); 
+  });
+  sql="select * from cart_item";
+  con.query(sql,(err,result)=>{
+    if (err) res.send(err);
+    console.log(result);
+    res.render("chng_qty_table",{table:result});
+  })
+}); 
 
 
 const port = 3000; // Port we will listen on
