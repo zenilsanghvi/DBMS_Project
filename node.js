@@ -125,13 +125,13 @@ app.post("/price_filter_table",function(req,res){
 });
 
 
-app.get("/product_stock",function(req,res){
+app.get("/product_stock",(req,res)=>{
   res.render("product_stock");
 })
 
-app.post("/product_stock",function(req,res){
+app.post("/product_stock",(req,res)=>{
   let sql="select product_stock(?)";
-  con.query(sql,req.body.pname,function(err,result){
+  con.query(sql,req.body.pname,(err,result)=>{
     if (err) throw err;
     res.send(result);
     // console.r(result);
@@ -139,13 +139,13 @@ app.post("/product_stock",function(req,res){
 })
 
 
-app.get("/total_cost",function(req,res){
+app.get("/total_cost",(req,res)=>{
   res.render("total_cost");
 })
 
-app.post("/total_cost",function(req,res){
+app.post("/total_cost",(req,res)=>{
   let sql="select total_cost(?)";
-  con.query(sql,req.body.cid,function(err,result){
+  con.query(sql,req.body.cid,(err,result)=>{
     if (err) throw err;
     res.send(result);
   })
