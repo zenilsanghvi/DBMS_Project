@@ -45,7 +45,7 @@ app.post("/add_cartitem", function (req, res) {
   sql="select * from cart_item";
   con.query(sql,(err,result)=>{
     if (err) res.send(err);
-    // console.log(result);
+    console.log(result);
       res.render("cart",{table:result});
   })
 });
@@ -152,6 +152,54 @@ app.post("/total_cost",(req,res)=>{
 })
 
 
+app.get("/update_seller_details",function(req,res){
+  res.render("update_seller_details");
+})
+
+app.post("/update_seller_details",function(req,res){
+  let sql="call update_seller_details(?,?,?,?,?,?,?)";
+  con.query(sql,[req.body.sid,req.body.sno,req.body.ad1,req.body.ad2,req.body.scity,req.body.spin,req.body.smo],function(err,result){
+    if (err) throw err;
+    con.query("select s_name,s_shopno,s_add1,s_add2,s_city,s_pincode,s_mobile_no from seller where s_id=?",req.body.sid,function(err,result){
+      if (err) throw err;});
+      
+      sql="select * from seller";
+      con.query(sql,(err,result)=>{
+      if (err) res.send(err);
+      console.log(result);
+        res.render("update_seller_details_table",{table:result})
+  })
+});
+});
+
+// app.post("/add_cartitem", function (req, res) {
+//   let sql = "call add_cartitem(?,?,?)";
+//   con.query(sql,[req.body.UserID, req.body.ProductID, req.body.Quantity],
+//     function (err, result) {
+//       if(err) throw err;});
+//   sql="select * from cart_item";
+//   con.query(sql,(err,result)=>{
+//     if (err) res.send(err);
+//     console.log(result);
+//       res.render("cart",{table:result});
+//   })
+// });
+
+
+app.get("/bill_amount",function(req,res){
+  res.render("bill_amount");
+})
+
+
+app.post("/bill_amount",function(req,res){
+  let sql = "select bill_amount(?)";
+  con.query(sql,parseInt(req.body.cid),function(err,result){
+    if (err) throw err;
+    res.send(result);
+  })
+})
+
+//Wrogn	17	Central Mall	Pal	Surat	348322	3497564857
 const port = 3000; // Port we will listen on
 
 // Function to listen on the port
